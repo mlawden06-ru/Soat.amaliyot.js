@@ -29,6 +29,7 @@ function clock() {
 clock()
 
 let tabsItem = document.querySelectorAll(".tabsItem");
+let tabsContentItem = document.querySelectorAll(".tabsContentItem");
 
 for (let i = 0; i < tabsItem.length; i++) {  
     tabsItem[i].addEventListener('click', function () {
@@ -36,12 +37,34 @@ for (let i = 0; i < tabsItem.length; i++) {
     
         for (let k = 0; k < tabsItem.length; k++) {
             tabsItem[k].classList.remove('active');  
+            tabsContentItem[k].classList.remove('active');  
         }
 
        
         tabsItem[i].classList.add('active');
+        tabsContentItem[i].classList.add('active');
     });
+
 }
 
+let stopwatchBtn = document.querySelector('.stopwatch__btn')
 
 
+function sec() {
+    stopwatchBtn.addEventListener('click', () => {
+
+        if (stopwatchBtn.innerText == 'START') {
+            stopwatchBtn.innerText = 'STOP'
+        }
+        
+        else if(stopwatchBtn.innerText == 'STOP') {
+            stopwatchBtn.innerText = 'CLEAR'
+        }
+        else (
+            stopwatchBtn.innerText = 'START'
+        )
+    })
+    
+}
+
+sec()
