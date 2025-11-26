@@ -48,23 +48,32 @@ for (let i = 0; i < tabsItem.length; i++) {
 }
 
 let stopwatchBtn = document.querySelector('.stopwatch__btn')
+let stopwatchseconds = document.querySelector('.stopwatch__seconds')
+let stopwatchminutes = document.querySelector('.stopwatch__minutes')
+let stopwatchhours = document.querySelector('.stopwatch__hours')
+let lampa = document.querySelector('.tabsLink__span')
 
 
-function sec() {
+
     stopwatchBtn.addEventListener('click', () => {
 
+        
         if (stopwatchBtn.innerText == 'START') {
             stopwatchBtn.innerText = 'STOP'
+            stopwatchseconds.innerText++
+            lampa.classList.add('active')
         }
         
         else if(stopwatchBtn.innerText == 'STOP') {
             stopwatchBtn.innerText = 'CLEAR'
+            lampa.classList.remove('active')
+            lampa.classList.add('active_clear')
         }
-        else (
+        else {
             stopwatchBtn.innerText = 'START'
-        )
+            lampa.classList.remove('active_clear')
+    }
     })
     
-}
 
-sec()
+
