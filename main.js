@@ -52,6 +52,33 @@ let stopwatchseconds = document.querySelector('.stopwatch__seconds')
 let stopwatchminutes = document.querySelector('.stopwatch__minutes')
 let stopwatchhours = document.querySelector('.stopwatch__hours')
 let lampa = document.querySelector('.tabsLink__span')
+let foo 
+
+
+function sec() {
+    stopwatchseconds.innerHTML++
+
+    if (stopwatchseconds.innerHTML > 59) {
+        stopwatchseconds.innerHTML = 0
+        stopwatchminutes.innerHTML++
+
+    }
+    else if(stopwatchminutes.innerHTML > 59){
+        stopwatchminutes.innerHTML = 0
+        stopwatchhours.innerHTML++
+    }
+    else if(stopwatchhours.innerHTML > 24){
+        stopwatchhours.innerHTML = 0
+    }
+
+
+
+
+    foo = setTimeout(() => {
+       sec()
+    }, 1000);
+}
+
 
 
 
@@ -60,18 +87,22 @@ let lampa = document.querySelector('.tabsLink__span')
         
         if (stopwatchBtn.innerText == 'START') {
             stopwatchBtn.innerText = 'STOP'
-            stopwatchseconds.innerText++
             lampa.classList.add('active')
+            sec()
         }
         
         else if(stopwatchBtn.innerText == 'STOP') {
             stopwatchBtn.innerText = 'CLEAR'
             lampa.classList.remove('active')
             lampa.classList.add('active_clear')
+            clearInterval(foo)
         }
         else {
             stopwatchBtn.innerText = 'START'
             lampa.classList.remove('active_clear')
+            stopwatchseconds.innerHTML = 0
+            stopwatchminutes.innerHTML = 0
+            stopwatchhours.innerHTML = 0
     }
     })
     
